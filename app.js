@@ -18,6 +18,10 @@ app.engine('hbs', hbs.express4({
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 
+app.get("/", (req, res)=>{
+    res.render("form.hbs")
+})
+
 app.post("/add", async (req, res) => {
     const { title, content } = req.body;
     try {
