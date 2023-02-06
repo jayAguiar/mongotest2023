@@ -43,6 +43,22 @@ app.post("/add", async (req, res) => {
       console.log(e);
     }
   });
+  app.get("/search", async (req, res) => {
+    try {
+      res.render("search.hbs");
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  app.get("/results", async (req, res) => {
+    try {
+      const post = await postModel.find({title:req.query.title});
+      res.json(post);
+    } catch (e) {
+      console.log(e);
+    }
+  });
 
   app.get("/:id", async (req, res) => {
     const { id } = req.params;
